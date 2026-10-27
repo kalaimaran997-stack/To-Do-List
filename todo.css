@@ -1,0 +1,213 @@
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #202538;
+    background: #f2f5fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 16px;
+}
+
+.todo {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    padding: 32px;
+    border: 1px solid #e1e6f0;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 16px 45px rgb(34 49 80 / 10%);
+    animation: app-enter 500ms ease-out both;
+}
+
+h1 {
+    margin: 0 0 24px;
+    text-align: center;
+}
+
+h2 {
+    margin: 28px 0 12px;
+    font-size: 1.15rem;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    min-width: 0;
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #cbd3e1;
+    border-radius: 10px;
+    font: inherit;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input[type="text"]:focus {
+    border-color: #536dfe;
+    outline: 3px solid rgb(83 109 254 / 18%);
+    box-shadow: 0 4px 14px rgb(83 109 254 / 10%);
+}
+
+button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 9px;
+    background: #536dfe;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 140ms ease, transform 140ms ease;
+}
+
+button:hover {
+    background: #3e57e8;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:focus-visible,
+input[type="checkbox"]:focus-visible {
+    outline: 3px solid #9daaff;
+    outline-offset: 2px;
+}
+
+.status {
+    min-height: 1.4em;
+    margin: 10px 0 0;
+    color: #526078;
+    font-size: 0.9rem;
+}
+
+.tasks {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 58px;
+    padding: 10px 12px;
+    border: 1px solid #e1e6f0;
+    border-radius: 12px;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    border-color: #cbd4f5;
+    box-shadow: 0 6px 16px rgb(34 49 80 / 8%);
+}
+
+.task input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #536dfe;
+}
+
+.task-label {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.completed {
+    color: #7b8498;
+    text-decoration: line-through;
+}
+
+.task .edit-input {
+    padding: 8px 10px;
+}
+
+button.secondary {
+    background: #edf0f7;
+    color: #30394c;
+}
+
+button.secondary:hover {
+    background: #dfe4ef;
+}
+
+button.delete {
+    background: #fff0ef;
+    color: #bd3932;
+}
+
+button.delete:hover {
+    background: #ffe0de;
+}
+
+.empty-message {
+    padding: 16px;
+    color: #68748a;
+    text-align: center;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+@keyframes app-enter {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    .todo {
+        padding: 22px 16px;
+    }
+
+    .task {
+        flex-wrap: wrap;
+    }
+
+    .task-label,
+    .task .edit-input {
+        flex-basis: calc(100% - 34px);
+    }
+}
